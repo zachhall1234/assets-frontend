@@ -21,6 +21,10 @@
   
 }
 
+.accordion__button:visited {
+  color: $govuk-blue-colour;
+}
+
 .accordion--stacked {
   border-bottom: none;
 }
