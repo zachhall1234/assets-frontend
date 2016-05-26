@@ -129,13 +129,9 @@ button, .button {
 }
 
 .button--link-style {
-  margin: 0;
-  padding: 0;
-  border: none;
+  @extend .link-style;
   background: none;
   box-shadow: none;
-  cursor: pointer;
-  text-decoration: underline;
 
   &:hover,
   &:focus,
