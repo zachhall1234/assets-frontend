@@ -20,7 +20,8 @@
     "comp-lib:watch": "nodemon -e html,js,css,png,jpeg -x 'npm run comp-lib:link && npm run comp-lib'",
     "comp-lib:link": "npm link hmrc-component-library-template",
     "vrt:baseline": "gulp vrt-baseline",
-    "vrt:compare": "gulp vrt-compare"
+    "vrt:compare": "gulp vrt-compare",
+    "postinstall": "npm run build"
   },
   "keywords": [
     "HMRC",
