@@ -27,7 +27,8 @@ var snapshotDir = dest + '999-SNAPSHOT/'
 var govuk = {
   elements: src + 'govuk_elements',
   template: src + 'govuk_elements/govuk',
-  images: src + 'govuk_elements/govuk/public/images/'
+  images: src + 'govuk_elements/govuk/public/images/',
+  elementsSass: 'node_modules/govuk-elements-sass/public/sass/'
 }
 
 module.exports = {
@@ -130,7 +131,8 @@ module.exports = {
         sourceComments: true,
         includePaths: [
           src,
-          govuk.template + '/public/sass'
+          govuk.template + '/public/sass',
+          govuk.elementsSass
         ],
         outputStyle: 'expanded'
       },
@@ -141,7 +143,8 @@ module.exports = {
       settings: {
         includePaths: [
           src,
-          govuk.template + '/public/sass'
+          govuk.template + '/public/sass',
+          govuk.elementsSass
         ],
         outputStyle: 'compressed'
       }
