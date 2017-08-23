@@ -96,7 +96,7 @@ Styleguide Navigation.Page
 */
 
 .page-navigation {
-  @include media-down(mobile) {
+  @include media(mobile) {
     margin-top: 0;
   }
 
@@ -114,7 +114,7 @@ Styleguide Navigation.Page
       width: 49%;
     }
 
-    @include media-down(mobile) {
+    @include media(mobile) {
       float: none;
       display: block;
       width: auto;
@@ -134,7 +134,7 @@ Styleguide Navigation.Page
       display: list-item;
     }
 
-    @include media-down(mobile) {
+    @include media(mobile) {
       float: none;
       margin: 0 1em 0 2.25em;
     }
@@ -149,11 +149,11 @@ Styleguide Navigation.Page
       }
     }
 
-    @include media-down(mobile) {
+    @include media(mobile) {
       @include core-19($line-height: (45/19));
 
       span, a {
-        border-top: solid 1px $grey-6;
+        border-top: solid 1px $grey-1;
         margin: 0 -1em 0 -2.25em;
         padding: 1em 1em 1em 2.75em;
       }

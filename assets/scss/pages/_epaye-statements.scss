@@ -118,7 +118,7 @@
   }
 
   .statement__summary--parent[aria-expanded=true] {
-    background-color: $grey-8;
+    background-color: $grey-4;
   }
 
   .alert--text {
@@ -194,7 +194,7 @@
   }
 
   .summary__cell--content {
-    color: $grey-0;
+    color: $black;
     margin-bottom: 0.26316em;
     white-space: nowrap;
   }
@@ -219,7 +219,7 @@
   .summary__table__head__cell,
   .summary__table__cell,
   .details__table__cell--total {
-    color: $grey-0;
+    color: $black;
     &:nth-child(even) {
       text-align: right;
       padding-right: 0;

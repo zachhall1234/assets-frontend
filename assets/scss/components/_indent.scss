@@ -16,7 +16,7 @@ Styleguide Indent
 
 .indent {
   @include core-16();
-  border-left: em(10) solid $grey-8;
+  border-left: em(10) solid $grey-4;
   display: block;
   margin: em(8) 0 em(16);
   overflow: hidden;

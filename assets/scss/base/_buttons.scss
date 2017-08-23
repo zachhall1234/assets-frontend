@@ -51,7 +51,7 @@ button, .button {
 }
 
 .button--secondary {
-  @include button($grey-8);
+  @include button($grey-3);
   @include core-19();
 }
 

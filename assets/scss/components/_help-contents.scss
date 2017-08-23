@@ -38,7 +38,7 @@ nav.help-contents {
       margin-right: 0;
     }
 
-    @include media-down(tablet) {
+    @include media(tablet) {
       width: auto;
       margin: 0;
       float: none;

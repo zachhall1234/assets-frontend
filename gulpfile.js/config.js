@@ -28,7 +28,8 @@ var govuk = {
   elements: src + 'govuk_elements',
   template: src + 'govuk_elements/govuk',
   images: src + 'govuk_elements/govuk/public/images/',
-  elementsSass: 'node_modules/govuk-elements-sass/public/sass/'
+  elementsSass: 'node_modules/govuk-elements-sass/public/sass',
+  toolkit: 'node_modules/govuk_frontend_toolkit'
 }
 
 module.exports = {
@@ -132,7 +133,8 @@ module.exports = {
         includePaths: [
           src,
           govuk.template + '/public/sass',
-          govuk.elementsSass
+          govuk.toolkit,
+          'node_modules'
         ],
         outputStyle: 'expanded'
       },
@@ -144,7 +146,8 @@ module.exports = {
         includePaths: [
           src,
           govuk.template + '/public/sass',
-          govuk.elementsSass
+          govuk.toolkit,
+          'node_modules'
         ],
         outputStyle: 'compressed'
       }
