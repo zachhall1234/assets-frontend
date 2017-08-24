@@ -30,9 +30,6 @@ $path: "../images/icons/";
 // @import "../govuk_frontend_static/basic";
 // @import "../govuk_frontend_static/template-text";
 
-// govuk_elements
-@import "govuk-elements-sass/public/sass/elements";
-
 // HMRC Specific
 @import "base/colours";
 @import "base/typography/fonts";
@@ -116,3 +113,6 @@ $path: "../images/icons/";
 
 // Unknown CSS
 @import "unknown";
+
+// govuk_elements
+@import "govuk-elements-sass/public/sass/elements";
