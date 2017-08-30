@@ -2,6 +2,11 @@
 module.exports = function (casper, scenario, vp) {
   var scenarioLabel = scenario.label.toLowerCase()
 
+  casper.evaluate(function () {
+    $('.comp-lib-sidebar').hide()
+    $('.comp-lib-code-example').hide()
+  })
+
   if (scenarioLabel === 'add-remove') {
     casper.evaluate(function () {
       // Use jQuery click() so the addRemove.js click implementation and its preventDefault() is fired
