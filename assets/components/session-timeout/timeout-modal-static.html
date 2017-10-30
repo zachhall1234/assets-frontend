@@ -1,0 +1,146 @@
+<!-- COOKIE MESSAGE -->
+<div id="global-cookie-message" style="display: block;">
+  <p>GOV.UK uses cookies to make the site simpler. <a href="https://www.gov.uk/help/cookies">Find out more about
+    cookies</a></p>
+</div>
+<!-- END COOKIE MESSAGE -->
+
+<!-- GOV.UK HEADER -->
+<header role="banner" id="global-header" class="with-proposition">
+  <div class="header-wrapper">
+    <div class="header-global">
+      <div class="header-logo">
+        <a href="https://www.gov.uk" title="Go to the GOV.UK homepage" id="logo" class="content">
+          <img src="images/gov.uk_logotype_crown_invert_trans.png?0.19.2" width="36" height="32" alt="">GOV.UK</a>
+      </div>
+    </div>
+    <div class="header-proposition">
+      <div class="content">
+        <nav id="proposition-menu">
+          <a href="#" id="proposition-name">Service name</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+<div id="global-header-bar"></div>
+<!-- END GOV.UK HEADER -->
+
+<main id="content" role="main">
+  <!-- PHASE BANNER -->
+  <div class="phase-banner">
+    <p>
+      <strong class="phase-tag">BETA</strong>
+      <span>This is a new service – your <a href="#">feedback</a> will help us to improve it.</span>
+    </p>
+  </div>
+  <!-- END PHASE BANNER -->
+
+  <!-- HMRC BANNER -->
+  <div class="hmrc-banner" role="banner">
+    <div class="organisation-logo">
+      <p>HM Revenue &amp; Customs</p>
+    </div>
+  </div>
+  <!-- END HMRC BANNER -->
+
+  <!-- LANGUAGE TOGGLE -->
+  <div class="lang-select">
+    <ul>
+      <li>English</li>
+      <li>|</li>
+      <li><a href="#">Cymraeg</a></li>
+    </ul>
+  </div>
+  <!-- END LANGUAGE TOGGLE -->
+<main id="content">
+  {% import "patterns/macro/banner.html" as pattern %}
+  {{ pattern.banner(hmrc=true, beta=true, signedIn=true) }}
+  <div class="grid-row">
+    <div class="column-two-thirds">
+      <h1 class="heading-large">Address details</h1>
+      <div class="panel panel-border-wide" >This is the address that the bank uses for your account, it is not the bank's address.</div>
+
+      <form method="post" action="refund-and-bank-address-edit" >
+        <h3 class="heading-medium">Address</h3>
+
+        <div class="form-group">
+          <label class="form-label" for="addressline1"><!--House number or name, and street--></label>
+          <input class="form-control" id="addressline1" name="addressLine1" type="text" value="{{addressLine1}}">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="addressline2"><!--Building and street--></label>
+          <input class="form-control" id="addressline2" name="addressLine2" type="text" value="{{addressLine2}}">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="town"><!--Town or city--></label>
+          <input class="form-control" id="town" name="town" type="text" value="{{town}}">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="county"><!--County (optional)--></label>
+          <input class="form-control" id="county" name="county" type="text" value="{{county}}">
+        </div>
+
+        <h3 class="heading-medium">Postcode</h3>
+        <div class="form-group">
+          <label class="form-label" for="postcode"><!--Postcode--></label>
+          <input class="form-control" id="postcode" name="postcode" type="text" value="{{postcode}}">
+        </div>
+
+
+        <div class="panel panel-border-wide" ><p>If you want HM Revenue and Customs to make this your main home address, you’ll need to update your address details in your personal tax account.</p>
+
+          <p>You can do this after your request for a refund has been submitted.</p></div>
+
+
+        <button type="submit" class="button">Continue</button>
+      </form>
+
+      <br>
+
+      <!-- Back button -->
+      <a href="javascript:window.history.back();" class="link-back">Back</a>
+
+    </div>
+  </div>
+
+  <div id="timeout-dialog" class="timeout-dialog" role="dialog" aria-labelledby="timeout-message" tabindex="-1" aria-live="polite"><p class="heading-medium push--top">You’re about to be signed out</p><p id="timeout-message" class="timeout-message" role="text">For your security reasons, you will be signed out of this service in <span id="timeout-countdown" class="countdown">2 minutes</span></p><button id="timeout-keep-signin-btn" class="button">Stay signed in</button><button id="timeout-sign-out-btn" class="button button--link select">Sign out now</button></div>
+  <div id="timeout-overlay" class="timeout-overlay"></div>  
+</main>
+
+<script src="{{ asset_path }}javascripts/timeout-dialog.js"></script>
+
+<script>
+    var my_title = document.getElementById("proposition-name");
+    my_title.innerHTML = "Check the Income Tax you paid";
+    $('html').addClass('noScroll')
+</script>
+
+<!-- FOOTER   -->
+<footer class="group js-footer" id="footer" role="contentinfo">
+  <div class="footer-wrapper">
+    <div class="footer-meta">
+      <div class="footer-meta-inner">
+        
+        <ul class="platform-help-links">
+          <li><a href="/help/cookies" target="_blank" data-sso="false" data-journey-click="footer:Click:Cookies">Cookies</a></li>
+          <li><a href="/help/privacy" target="_blank" data-sso="false" data-journey-click="footer:Click:Privacy policy">Privacy policy</a></li>
+          <li><a href="/help/terms-and-conditions" target="_blank" data-sso="false" data-journey-click="footer:Click:Terms and conditions">Terms and conditions</a></li>
+          <li><a href="https://www.gov.uk/help" target="_blank" data-sso="false" data-journey-click="footer:Click:Help">Help using GOV.UK</a></li>
+        </ul>
+        
+        <div class="open-government-licence">
+          <p class="logo"><a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence</a></p>
+          <p>All content is available under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/" rel="license">Open Government Licence v3.0</a>, except where otherwise stated</p>
+        </div>
+      </div>
+      <div class="copyright">
+        <a href="http://www.nationalarchives.gov.uk/information-management/re-using-public-sector-information/copyright-and-re-use/crown-copyright/">© Crown copyright</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- END FOOTER -->
