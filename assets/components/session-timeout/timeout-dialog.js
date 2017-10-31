@@ -5,7 +5,9 @@
  *
  */
 
-Date.now = Date.now || function () { return +new Date; };
+Date.now = Date.now || function () {
+  return +new Date()
+}
 
 function secondsToTime (secs) {
   var hours = Math.floor(secs / (60 * 60))
@@ -24,7 +26,7 @@ function secondsToTime (secs) {
   return obj
 }
 
-!function ($) {
+(function ($) {
   $.timeoutDialog = function (options) {
     var settings = {
       timeout: 900,
@@ -65,14 +67,14 @@ function secondsToTime (secs) {
       setupDialog: function () {
         var self = this
         self.dialogOpen = true
-        self.startTime = Math.round(Date.now()/1000, 0)
+        self.startTime = Math.round(Date.now() / 1000, 0)
         self.currentMin = Math.ceil(settings.timeout / 60)
         self.destroyDialog()
         if (settings.background_no_scroll) {
           $('html').addClass('noScroll')
         }
         var time = secondsToTime(settings.countdown)
-        if(time.m == 1) {
+        if (time.m === 1) {
           settings.time = ' minute'
         }
         $('<div id="timeout-dialog" class="timeout-dialog" role="dialog" aria-labelledby="timeout-message" tabindex=-1 aria-live="polite">' +
@@ -82,17 +84,17 @@ function secondsToTime (secs) {
           '<button id="timeout-sign-out-btn" class="button button--link select">' + settings.sign_out_button_text + '</button>' +
           '</div>' +
           '<div id="timeout-overlay" class="timeout-overlay"></div>')
-        .appendTo('body')
+          .appendTo('body')
 
         // AL: disable the non-dialog page to prevent confusion for VoiceOver users
         $('#skiplink-container, body>header, #global-cookie-message, body>main, body>footer').attr('aria-hidden', 'true')
 
         var activeElement = document.activeElement
-        var modalFocus = document.getElementById("timeout-keep-signin-btn")
+        var modalFocus = document.getElementById('timeout-keep-signin-btn')
         modalFocus.focus()
         self.addEvents()
         self.startCountdown(settings.countdown)
-               
+
         self.escPress = function (event) {
           if (self.dialogOpen && event.keyCode === 27) {
             // close the dialog
@@ -109,11 +111,11 @@ function secondsToTime (secs) {
         }
 
         // AL: prevent scrolling on touch, but allow pinch zoom
-        self.handleTouch = function(e){
+        self.handleTouch = function (e) {
           var touches = e.originalEvent.touches || e.originalEvent.changedTouches
           if ($('#timeout-dialog').length) {
-            if(touches.length == 1){
-                e.preventDefault()
+            if (touches.length === 1) {
+              e.preventDefault()
             }
           }
         }
@@ -125,9 +127,11 @@ function secondsToTime (secs) {
       },
 
       destroyDialog: function () {
+        var self = this
+
         if ($('#timeout-dialog').length) {
           self.dialogOpen = false
-          $('.timeout-overlay').remove();
+          $('.timeout-overlay').remove()
           $('#timeout-dialog').remove()
           if (settings.background_no_scroll) {
             $('html').removeClass('noScroll')
@@ -137,57 +141,57 @@ function secondsToTime (secs) {
       },
 
       // AL: moved updater to own call to allow calling from other events
-      updateUI: function(counter){
+      updateUI: function (counter) {
         var self = this
         if (counter < 60) {
           $('.timeout-dialog').removeAttr('aria-live')
-          $('#timeout-countdown').html(counter + " seconds")
+          $('#timeout-countdown').html(counter + ' seconds')
         } else {
-            var newCounter = Math.ceil(counter / 60);
-            var minutesMessage = " minutes"
-            if(newCounter == 1) {
-              minutesMessage = " minute"
-            }
-            if(newCounter < self.currentMin){
-              self.currentMin = newCounter
-              $('#timeout-countdown').html(newCounter + minutesMessage)
-            }
+          var newCounter = Math.ceil(counter / 60)
+          var minutesMessage = ' minutes'
+          if (newCounter === 1) {
+            minutesMessage = ' minute'
           }
+          if (newCounter < self.currentMin) {
+            self.currentMin = newCounter
+            $('#timeout-countdown').html(newCounter + minutesMessage)
+          }
+        }
       },
 
-      addEvents: function(){
-        var self = this;
+      addEvents: function () {
+        var self = this
         // trap focus in modal (or browser chrome)
-        $('a, input, textarea, button, [tabindex]').not('[tabindex="-1"]').on("focus", function (event) {
-          var modalFocus = document.getElementById("timeout-dialog")
-          if(modalFocus && self.dialogOpen){
-            if(!modalFocus.contains(event.target)) {
+        $('a, input, textarea, button, [tabindex]').not('[tabindex="-1"]').on('focus', function (event) {
+          var modalFocus = document.getElementById('timeout-dialog')
+          if (modalFocus && self.dialogOpen) {
+            if (!modalFocus.contains(event.target)) {
               event.stopPropagation()
               modalFocus.focus()
             }
           }
-        });
+        })
 
-        function handleFocus(){
-          if(self.dialogOpen){
+        function handleFocus () {
+          if (self.dialogOpen) {
             // clear the countdown
             window.clearInterval(self.countdown)
             // calculate remaining time
-            var expiredSeconds = (Math.round(Date.now()/1000, 0)) - self.startTime;
-            var currentCounter = settings.countdown - expiredSeconds;
-            self.updateUI(currentCounter);
-            self.startCountdown(currentCounter);
+            var expiredSeconds = (Math.round(Date.now() / 1000, 0)) - self.startTime
+            var currentCounter = settings.countdown - expiredSeconds
+            self.updateUI(currentCounter)
+            self.startCountdown(currentCounter)
           }
         }
 
         // AL: handle browsers pausing timeouts/intervals by recalculating the remaining time on window focus
         // need to widen this to cover the setTimeout which triggers the dialog for browsers which pause timers on blur
         // hiding this from IE8 and it breaks the reset - to investigate further
-        if (navigator.userAgent.match(/MSIE 8/) == null) {
-          //$(window).on("blur", function(){
-          $(window).off("focus", handleFocus);
-          $(window).on("focus", handleFocus);
-          //});
+        if (navigator.userAgent.match(/MSIE 8/) === null) {
+          // $(window).on('blur', function(){
+          $(window).off('focus', handleFocus)
+          $(window).on('focus', handleFocus)
+          // })
         }
       },
 
@@ -195,7 +199,7 @@ function secondsToTime (secs) {
         var self = this
         self.countdown = window.setInterval(function () {
           counter -= 1
-          self.updateUI(counter);
+          self.updateUI(counter)
           if (counter <= 0) {
             self.signOut()
           }
@@ -217,9 +221,9 @@ function secondsToTime (secs) {
 
       signOut: function () {
         window.location = settings.logout_url
-       }
+      }
     }
 
     TimeoutDialog.init()
   }
-}(window.jQuery)
+}(window.jQuery))

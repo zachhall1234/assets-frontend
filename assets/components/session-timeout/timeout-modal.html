@@ -62,23 +62,3 @@
 
 {% endblock %}
 
-{% block pageScripts %}
-
-<script src="{{ asset_path }}javascripts/timeout-dialog.js"></script>
-
-<script>
-    var my_title = document.getElementById("proposition-name");
-    my_title.innerHTML = "Check the Income Tax you paid";
-</script>
-
-<script>
-
-  $.timeoutDialog({
-    timeout: 125,
-    title: 'You’re about to be signed out',
-    logout_url: 'sessionTimeout'
-  });
-
-</script>
-
-{% endblock %}

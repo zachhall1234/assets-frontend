@@ -51,6 +51,8 @@ var modalDialog = require('./modules/modalDialog.js')
 var dynamicGaTags = require('./modules/dynamicGaTags.js')
 var listCollapse = require('./modules/listCollapse.js')
 
+require('../components/session-timeout/timeout-dialog.js')
+
 // initialise mdtpf
 fingerprint()
 
@@ -141,6 +143,14 @@ $(function () {
     // setup showing/hiding of contextual fields
     toggleContextualFields().setup()
   }
+
+  $('[data-timeout-dialog-opener]').on('click', function () {
+    $.timeoutDialog({
+      timeout: 1,
+      title: 'You’re about to be signed out',
+      logout_url: '#'
+    })
+  })
 
   sso().init()
   visibility()
