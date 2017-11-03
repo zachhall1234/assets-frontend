@@ -206,6 +206,7 @@ module.exports = {
   patternLibrary: {
     sourceBaseDir: src,
     src: [
+      src + 'styles',
       src + 'components',
       src + 'patterns'
     ],
