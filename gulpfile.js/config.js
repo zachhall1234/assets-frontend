@@ -222,7 +222,7 @@ module.exports = {
 
   browserSync: [{
     ui: false,
-    port: process.env.PORT,
+    port: process.env.PORT || 9034,
     open: false,
     server: 'component-library'
   }]
