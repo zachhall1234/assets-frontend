@@ -222,23 +222,8 @@ module.exports = {
 
   browserSync: [{
     ui: false,
-    port: 9032,
-    open: false,
-    server: {
-      baseDir: '.',
-      routes: {
-        '/assets': dest
-      }
-    }
-  }, {
-    ui: false,
-    port: 9033,
+    port: process.env.PORT,
     open: false,
     server: 'component-library'
-  }, {
-    ui: false,
-    port: 9034,
-    open: false,
-    server: 'design-pattern-library'
   }]
 }
